@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   bonus_ft_lsttiter.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 11:30:51 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 15:51:07 by bvernimm         ###   ########.fr       */
+/*   Created: 2022/01/12 11:28:25 by bvernimm          #+#    #+#             */
+/*   Updated: 2022/01/12 11:32:36 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	char		*dest;
-	const char	*sorc;
-	int			a;
-
-	dest = dst;
-	sorc = src;
-	a = 1;
-	len--;
-	if (dst > src)
+	while (lst)
 	{
-		dest = dest + len;
-		sorc = sorc + len;
-		a = -1;
+		f(lst);
+		lst = lst->next;
 	}
-	while (len)
-	{
-		*dest = *sorc;
-		len--;
-		dest = dest + a;
-		sorc = sorc + a;
-	}
-	return (dst);
 }

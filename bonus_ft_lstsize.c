@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   bonus_ft_lstsize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 11:30:51 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 15:51:07 by bvernimm         ###   ########.fr       */
+/*   Created: 2022/01/12 10:19:15 by bvernimm          #+#    #+#             */
+/*   Updated: 2022/01/12 10:21:59 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_lstsize(t_list *lst)
 {
-	char		*dest;
-	const char	*sorc;
-	int			a;
+	int	i;
 
-	dest = dst;
-	sorc = src;
-	a = 1;
-	len--;
-	if (dst > src)
+	i = 0;
+	while (lst)
 	{
-		dest = dest + len;
-		sorc = sorc + len;
-		a = -1;
+		lst = lst->next;
+		i++;
 	}
-	while (len)
-	{
-		*dest = *sorc;
-		len--;
-		dest = dest + a;
-		sorc = sorc + a;
-	}
-	return (dst);
+	return (i);
 }

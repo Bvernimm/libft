@@ -12,6 +12,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 HEADER = libft.h
 
+BONUSSRC = ${shell ls | grep -E "bonus_.+\.c"}
+
+BONUS = ${BONUSSRC:.c=.o}
+
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
@@ -29,5 +33,7 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY : all clean fclean re
+bonus:	${BONUS} all
+
+.PHONY : all clean fclean re bonus
 

@@ -6,7 +6,7 @@
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 10:02:52 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 11:27:11 by bvernimm         ###   ########.fr       */
+/*   Updated: 2022/01/11 15:26:49 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_stop(char *s1, char *set)
 
 int	ft_start(char *s1, char *set)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < ft_strlen(s1))
