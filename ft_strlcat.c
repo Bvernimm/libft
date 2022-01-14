@@ -6,7 +6,7 @@
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:23:24 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 09:22:09 by bvernimm         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:54:42 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	while (dst[a] != '\0' && a < dstsize)
 		a++;
 	b = a;
+	if (dstsize == 0)
+		return (ft_strlen(src));
 	while (src[a - b] != '\0' && a < dstsize - 1)
 	{
 		dst[a] = src[a - b];

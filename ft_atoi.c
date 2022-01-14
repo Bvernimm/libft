@@ -6,7 +6,7 @@
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:51:00 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 09:23:04 by bvernimm         ###   ########.fr       */
+/*   Updated: 2022/01/14 09:59:37 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 int	ft_atoi(const char *str)
 {
-	int	a;
-	int	b;
-	int	i;
+	long	nb;
+	int		neg;
+	int		i;
 
-	a = 0;
-	b = 1;
+	nb = 0;
+	neg = 1;
 	i = 0;
-	while (str[a] == 32 || str[a] == '\t' || str[a] == '\n' || str[a] == '\v'
-		|| str[a] == '\f' || str[a] == '\r')
-		a++;
-	if (str[a] == 45 || str[a] == 43)
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			neg = -neg;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[a] == 45)
-			b = -b;
-		a++;
+		if ((nb > 2147483647)
+			&& neg > 0)
+			return (-1);
+		if ((nb > 2147483648)
+			&& neg < 0)
+			return (0);
+		nb = (nb * 10) + (str[i] - '0');
+		i++;
 	}
-	while (str[a] >= '0' && str[a] <= '9')
-	{
-		i = i * 10;
-		i = i + str[a] - 48;
-		a++;
-	}
-	i = i * b;
-	return (i);
+	return (nb * neg);
 }

@@ -6,7 +6,7 @@
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:07:34 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 09:22:16 by bvernimm         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:49:41 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	b = 0;
 	while (src[b] != '\0')
 		b++;
+	if (dstsize == 0)
+		return (b);
 	while (a < dstsize - 1 && src[a] != '\0')
 	{
 		dst[a] = src[a];

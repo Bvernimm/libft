@@ -6,7 +6,7 @@
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 11:27:30 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 12:03:07 by bvernimm         ###   ########.fr       */
+/*   Updated: 2022/01/13 10:59:54 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	tab_add(char *tab, char *from, char c)
 	tab[i] = '\0';
 }
 
-void	too_many_line(char **tab, char *str, char c)
+void	*too_many_line(char **tab, char *str, char c)
 {
 	int	i;
 	int	j;
@@ -70,11 +70,14 @@ void	too_many_line(char **tab, char *str, char c)
 			while (check_sep(str[i + j], c) == 0)
 				j++;
 			tab[k] = (char *) malloc (sizeof(char) * (j + 1));
+			if (!tab[k])
+				return (NULL);
 			tab_add(tab[k], str + i, c);
 			k++;
 			i = i + j;
 		}
 	}
+	return (str);
 }
 
 char	**ft_split(char const *s, char c)
@@ -82,10 +85,14 @@ char	**ft_split(char const *s, char c)
 	char	**tab;
 	int		count;
 
-	tab = NULL;
+	if (s == NULL)
+		return (NULL);
 	count = length((char *)s, c);
 	tab = (char **) malloc (sizeof(char *) * (count + 1));
-	too_many_line(tab, (char *)s, c);
+	if (!tab)
+		return (NULL);
+	if (!(too_many_line(tab, (char *)s, c)))
+		return (NULL);
 	tab[count] = 0;
 	return (tab);
 }

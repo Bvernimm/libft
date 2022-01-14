@@ -6,7 +6,7 @@
 /*   By: bvernimm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 09:41:30 by bvernimm          #+#    #+#             */
-/*   Updated: 2022/01/11 09:53:16 by bvernimm         ###   ########.fr       */
+/*   Updated: 2022/01/14 10:54:18 by bvernimm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	str = malloc(sizeof(char) * ft_strlen((char *)s1) * ft_strlen((char *)s2));
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen((char *)s1)
+				+ ft_strlen((char *)s2) + 1));
 	if (str == NULL)
 		return (str);
 	while (s1[i] != '\0')
@@ -33,5 +36,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[i + j] = s2[j];
 		j++;
 	}
+	str[i + j] = '\0';
 	return (str);
 }
